@@ -124,8 +124,8 @@ namespace GameCore
         RECT rc = { 0, 0, (LONG)g_DisplayWidth, (LONG)g_DisplayHeight };
         AdjustWindowRect(&rc, WS_OVERLAPPEDWINDOW, FALSE);
 
-        g_hWnd = CreateWindow(className, className, WS_OVERLAPPEDWINDOW, CW_USEDEFAULT, CW_USEDEFAULT,
-            rc.right - rc.left, rc.bottom - rc.top, nullptr, nullptr, hInst, nullptr);
+		g_hWnd = CreateWindow(className, className, WS_OVERLAPPEDWINDOW, CW_USEDEFAULT, CW_USEDEFAULT,
+			rc.right - rc.left, rc.bottom - rc.top, nullptr, nullptr, hInst, nullptr);
 
         ASSERT(g_hWnd != 0);
 

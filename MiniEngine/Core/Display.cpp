@@ -95,8 +95,10 @@ namespace Graphics
 
     uint32_t g_NativeWidth = 0;
     uint32_t g_NativeHeight = 0;
-    uint32_t g_DisplayWidth = 1920;
-    uint32_t g_DisplayHeight = 1080;
+    //uint32_t g_DisplayWidth = 1920;
+    //uint32_t g_DisplayHeight = 1080;
+	uint32_t g_DisplayWidth = 1280;
+	uint32_t g_DisplayHeight = 720;
     ColorBuffer g_PreDisplayBuffer;
 
     void ResolutionToUINT(eResolution res, uint32_t& width, uint32_t& height)

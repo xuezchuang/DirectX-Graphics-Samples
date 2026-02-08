@@ -422,9 +422,9 @@ bool NestedTimingTree::sm_CursorOnGraph = false;
 namespace EngineProfiling
 {
     BoolVar DrawFrameRate("Display Frame Rate", true);
-    BoolVar DrawProfiler("Display Profiler", false);
+    BoolVar DrawProfiler("Display Profiler", true);
     //BoolVar DrawPerfGraph("Display Performance Graph", false);
-    const bool DrawPerfGraph = false;
+    const bool DrawPerfGraph = true;
     
     void Update( void )
     {

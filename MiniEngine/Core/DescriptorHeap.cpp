@@ -67,27 +67,35 @@ D3D12_CPU_DESCRIPTOR_HANDLE DescriptorAllocator::Allocate( uint32_t Count )
 // DescriptorHeap implementation
 //
 
-void DescriptorHeap::Create( const std::wstring& Name, D3D12_DESCRIPTOR_HEAP_TYPE Type, uint32_t MaxCount )
+void DescriptorHeap::Create(const std::wstring& Name, D3D12_DESCRIPTOR_HEAP_TYPE Type, uint32_t MaxCount)
 {
-    m_HeapDesc.Type = Type;
-    m_HeapDesc.NumDescriptors = MaxCount;
-    m_HeapDesc.Flags = D3D12_DESCRIPTOR_HEAP_FLAG_SHADER_VISIBLE;
-    m_HeapDesc.NodeMask = 1;
+	m_HeapDesc.Type = Type;
+	m_HeapDesc.NumDescriptors = MaxCount;
+	bool shaderVisible = false;
+	if (Type == D3D12_DESCRIPTOR_HEAP_TYPE_CBV_SRV_UAV)
+	{
+		shaderVisible = true;
+		m_HeapDesc.Flags = D3D12_DESCRIPTOR_HEAP_FLAG_SHADER_VISIBLE;
+	}
+	else if (Type == D3D12_DESCRIPTOR_HEAP_TYPE_RTV)
+	{
+		m_HeapDesc.Flags = D3D12_DESCRIPTOR_HEAP_FLAG_NONE;
+	}
 
-    ASSERT_SUCCEEDED(g_Device->CreateDescriptorHeap(&m_HeapDesc, MY_IID_PPV_ARGS(m_Heap.ReleaseAndGetAddressOf())));
+	m_HeapDesc.NodeMask = 1;
+
+	ASSERT_SUCCEEDED(g_Device->CreateDescriptorHeap(&m_HeapDesc, MY_IID_PPV_ARGS(m_Heap.ReleaseAndGetAddressOf())));
 
 #ifdef RELEASE
-    (void)Name;
+	(void)Name;
 #else
-    m_Heap->SetName(Name.c_str());
+	m_Heap->SetName(Name.c_str());
 #endif
 
-    m_DescriptorSize = g_Device->GetDescriptorHandleIncrementSize(m_HeapDesc.Type);
-    m_NumFreeDescriptors = m_HeapDesc.NumDescriptors;
-    m_FirstHandle = DescriptorHandle(
-        m_Heap->GetCPUDescriptorHandleForHeapStart(),
-        m_Heap->GetGPUDescriptorHandleForHeapStart());
-    m_NextFreeHandle = m_FirstHandle;
+	m_DescriptorSize = g_Device->GetDescriptorHandleIncrementSize(m_HeapDesc.Type);
+	m_NumFreeDescriptors = m_HeapDesc.NumDescriptors;
+	m_FirstHandle = DescriptorHandle(m_Heap->GetCPUDescriptorHandleForHeapStart(), shaderVisible ? m_Heap->GetGPUDescriptorHandleForHeapStart() : DescriptorHandle());
+	m_NextFreeHandle = m_FirstHandle;
 }
 
 DescriptorHandle DescriptorHeap::Alloc( uint32_t Count )
