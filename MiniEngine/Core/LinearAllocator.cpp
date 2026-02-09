@@ -135,8 +135,8 @@ void LinearAllocator::CleanupUsedPages( uint64_t FenceID )
 		m_CurPage = nullptr;
 		m_CurOffset = 0;
 	}
-	else
-		return;
+	//else
+	//	return;
 
     sm_PageManager[m_AllocationType].DiscardPages(FenceID, m_RetiredPages);
     m_RetiredPages.clear();

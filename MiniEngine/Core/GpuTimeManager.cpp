@@ -68,6 +68,10 @@ void GpuTimeManager::Initialize(uint32_t MaxNumTimers)
     sm_QueryHeap->SetName(L"GpuTimeStamp QueryHeap");
 
     sm_MaxNumTimers = (uint32_t)MaxNumTimers;
+
+	CommandContext& Context = CommandContext::Begin();
+	Context.InsertTimeStamp(sm_QueryHeap, 0);
+	sm_Fence = Context.Finish();
 }
 
 void GpuTimeManager::Shutdown()
@@ -130,6 +134,10 @@ void GpuTimeManager::EndReadBack(void)
 
 float GpuTimeManager::GetTime(uint32_t TimerIdx)
 {
+	if (TimerIdx == 0)
+	{
+		return 0.0f;
+	}
     ASSERT(sm_TimeStampBuffer != nullptr, "Time stamp readback buffer is not mapped");
     ASSERT(TimerIdx < sm_NumTimers, "Invalid GPU timer index");
 

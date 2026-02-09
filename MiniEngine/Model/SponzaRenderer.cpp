@@ -366,11 +366,11 @@ void Sponza::RenderScene(
     {
         if (!SSAO::DebugDraw)
         {
+			gfxContext.Flush();
+			pfnSetupGraphicsState();
+
             if (SSAO::AsyncCompute)
             {
-                gfxContext.Flush();
-                pfnSetupGraphicsState();
-
                 // Make the 3D queue wait for the Compute queue to finish SSAO
                 g_CommandManager.GetGraphicsQueue().StallForProducer(g_CommandManager.GetComputeQueue());
             }

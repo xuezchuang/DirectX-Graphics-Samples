@@ -34,7 +34,7 @@
 #include "ShadowCamera.h"
 #include "Display.h"
 
-//#define LEGACY_RENDERER
+#define LEGACY_RENDERER
 
 using namespace GameCore;
 using namespace Math;
