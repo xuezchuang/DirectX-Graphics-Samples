@@ -39,6 +39,7 @@ groupshared float g_CacheW[256];
 [numthreads( 8, 8, 1 )]
 void main( uint3 Gid : SV_GroupID, uint GI : SV_GroupIndex, uint3 GTid : SV_GroupThreadID, uint3 DTid : SV_DispatchThreadID )
 {
+	// 将8x8的深度图,扩展成16x16的深度图.深度切换为线性深度.
     uint2 startST = Gid.xy << 4 | GTid.xy;
     uint destIdx = GTid.y << 4 | GTid.x;
     g_CacheW[ destIdx +  0  ] = Linearize(startST | uint2(0, 0));
@@ -47,14 +48,18 @@ void main( uint3 Gid : SV_GroupID, uint GI : SV_GroupIndex, uint3 GTid : SV_Grou
     g_CacheW[ destIdx + 136 ] = Linearize(startST | uint2(8, 8));
 
     GroupMemoryBarrierWithGroupSync();
-
+	//将8x8的索引,切换到16x16的索引.
+	//(00-->00)(10-->20)(20-->40)(01-->02)(02-->04)
+	//1x1对应到2x2.只取第一个?
     uint ldsIndex = (GTid.x << 1) | (GTid.y << 5);
 
     float w1 = g_CacheW[ldsIndex];
 
     uint2 st = DTid.xy;
     uint slice = (st.x & 3) | ((st.y & 3) << 2);
-    DS2x[st] = w1;
+	//如果原Depth是1920x1080.DS2x是960x540;DTid在c++中120*8来分发的.所以DTid的xy就是960x540.在执行downsample
+    DS2x[st] = w1;	
+	//将960x540分割成4x4储存,也就是240x135.deinterleave the depth buffer
     DS2xAtlas[uint3(st >> 2, slice)] = w1;
 
     if ((GI & 011) == 0)
@@ -64,5 +69,4 @@ void main( uint3 Gid : SV_GroupID, uint GI : SV_GroupIndex, uint3 GTid : SV_Grou
         DS4x[st] = w1;
         DS4xAtlas[uint3(st >> 2, slice)] = w1;
     }
-
 }

@@ -22980,7 +22980,7 @@
             "uri": "sponza2.bin"
         }
     ],
-	"images" : [
+	  "images" : [
 		{
 			"uri" : "background_basecolor.png"
 		},
@@ -23174,7 +23174,7 @@
 			"uri" : "vase_round_normal.png"
 		}
 	],
-	"materials" : [
+	  "materials" : [
 		{
 			"name" : "16___Default",
 			"pbrMetallicRoughness" : {
@@ -30020,7 +30020,7 @@
     "scene": 0,
     "scenes": [
         {
-			"name" : "Sponza Atrium",
+			      "name" : "Sponza Atrium",
             "nodes": [
                 0,
                 1,
@@ -30406,262 +30406,262 @@
             ]
         }
     ],
-	"textures" : [
-		{
-			"sampler" : 0,
-			"source" : 0
-		},
-		{
-			"sampler" : 0,
-			"source" : 1
-		},
-		{
-			"sampler" : 0,
-			"source" : 2
-		},
-		{
-			"sampler" : 0,
-			"source" : 3
-		},
-		{
-			"sampler" : 0,
-			"source" : 4
-		},
-		{
-			"sampler" : 0,
-			"source" : 5
-		},
-		{
-			"sampler" : 0,
-			"source" : 6
-		},
-		{
-			"sampler" : 0,
-			"source" : 7
-		},
-		{
-			"sampler" : 0,
-			"source" : 8
-		},
-		{
-			"sampler" : 0,
-			"source" : 9
-		},
-		{
-			"sampler" : 0,
-			"source" : 10
-		},
-		{
-			"sampler" : 0,
-			"source" : 11
-		},
-		{
-			"sampler" : 0,
-			"source" : 12
-		},
-		{
-			"sampler" : 0,
-			"source" : 13
-		},
-		{
-			"sampler" : 0,
-			"source" : 14
-		},
-		{
-			"sampler" : 0,
-			"source" : 15
-		},
-		{
-			"sampler" : 0,
-			"source" : 16
-		},
-		{
-			"sampler" : 0,
-			"source" : 17
-		},
-		{
-			"sampler" : 0,
-			"source" : 18
-		},
-		{
-			"sampler" : 0,
-			"source" : 19
-		},
-		{
-			"sampler" : 0,
-			"source" : 20
-		},
-		{
-			"sampler" : 0,
-			"source" : 21
-		},
-		{
-			"sampler" : 0,
-			"source" : 22
-		},
-		{
-			"sampler" : 0,
-			"source" : 23
-		},
-		{
-			"sampler" : 0,
-			"source" : 24
-		},
-		{
-			"sampler" : 0,
-			"source" : 25
-		},
-		{
-			"sampler" : 0,
-			"source" : 26
-		},
-		{
-			"sampler" : 0,
-			"source" : 27
-		},
-		{
-			"sampler" : 0,
-			"source" : 28
-		},
-		{
-			"sampler" : 0,
-			"source" : 29
-		},
-		{
-			"sampler" : 0,
-			"source" : 30
-		},
-		{
-			"sampler" : 0,
-			"source" : 31
-		},
-		{
-			"sampler" : 0,
-			"source" : 32
-		},
-		{
-			"sampler" : 0,
-			"source" : 33
-		},
-		{
-			"sampler" : 0,
-			"source" : 34
-		},
-		{
-			"sampler" : 0,
-			"source" : 35
-		},
-		{
-			"sampler" : 0,
-			"source" : 36
-		},
-		{
-			"sampler" : 0,
-			"source" : 37
-		},
-		{
-			"sampler" : 0,
-			"source" : 38
-		},
-		{
-			"sampler" : 0,
-			"source" : 39
-		},
-		{
-			"sampler" : 0,
-			"source" : 40
-		},
-		{
-			"sampler" : 0,
-			"source" : 41
-		},
-		{
-			"sampler" : 0,
-			"source" : 42
-		},
-		{
-			"sampler" : 0,
-			"source" : 43
-		},
-		{
-			"sampler" : 0,
-			"source" : 44
-		},
-		{
-			"sampler" : 0,
-			"source" : 45
-		},
-		{
-			"sampler" : 0,
-			"source" : 46
-		},
-		{
-			"sampler" : 0,
-			"source" : 47
-		},
-		{
-			"sampler" : 0,
-			"source" : 48
-		},
-		{
-			"sampler" : 0,
-			"source" : 49
-		},
-		{
-			"sampler" : 0,
-			"source" : 50
-		},
-		{
-			"sampler" : 0,
-			"source" : 51
-		},
-		{
-			"sampler" : 0,
-			"source" : 52
-		},
-		{
-			"sampler" : 0,
-			"source" : 53
-		},
-		{
-			"sampler" : 0,
-			"source" : 54
-		},
-		{
-			"sampler" : 0,
-			"source" : 55
-		},
-		{
-			"sampler" : 0,
-			"source" : 56
-		},
-		{
-			"sampler" : 0,
-			"source" : 57
-		},
-		{
-			"sampler" : 0,
-			"source" : 58
-		},
-		{
-			"sampler" : 0,
-			"source" : 59
-		},
-		{
-			"sampler" : 0,
-			"source" : 60
-		},
-		{
-			"sampler" : 0,
-			"source" : 61
-		},
-		{
-			"sampler" : 0,
-			"source" : 62
-		},
-		{
-			"sampler" : 0,
-			"source" : 63
-		}
-	]
+	  "textures" : [
+		  {
+			  "sampler" : 0,
+			  "source" : 0
+		  },
+		  {
+			  "sampler" : 0,
+			  "source" : 1
+		  },
+		  {
+			  "sampler" : 0,
+			  "source" : 2
+		  },
+		  {
+			  "sampler" : 0,
+			  "source" : 3
+		  },
+		  {
+			  "sampler" : 0,
+			  "source" : 4
+		  },
+		  {
+			  "sampler" : 0,
+			  "source" : 5
+		  },
+		  {
+			  "sampler" : 0,
+			  "source" : 6
+		  },
+		  {
+			  "sampler" : 0,
+			  "source" : 7
+		  },
+		  {
+			  "sampler" : 0,
+			  "source" : 8
+		  },
+		  {
+			  "sampler" : 0,
+			  "source" : 9
+		  },
+		  {
+			  "sampler" : 0,
+			  "source" : 10
+		  },
+		  {
+			  "sampler" : 0,
+			  "source" : 11
+		  },
+		  {
+			  "sampler" : 0,
+			  "source" : 12
+		  },
+		  {
+			  "sampler" : 0,
+			  "source" : 13
+		  },
+		  {
+			  "sampler" : 0,
+			  "source" : 14
+		  },
+		  {
+			  "sampler" : 0,
+			  "source" : 15
+		  },
+		  {
+			  "sampler" : 0,
+			  "source" : 16
+		  },
+		  {
+			  "sampler" : 0,
+			  "source" : 17
+		  },
+		  {
+			  "sampler" : 0,
+			  "source" : 18
+		  },
+		  {
+			  "sampler" : 0,
+			  "source" : 19
+		  },
+		  {
+			  "sampler" : 0,
+			  "source" : 20
+		  },
+		  {
+			  "sampler" : 0,
+			  "source" : 21
+		  },
+		  {
+			  "sampler" : 0,
+			  "source" : 22
+		  },
+		  {
+			  "sampler" : 0,
+			  "source" : 23
+		  },
+		  {
+			  "sampler" : 0,
+			  "source" : 24
+		  },
+		  {
+			  "sampler" : 0,
+			  "source" : 25
+		  },
+		  {
+			  "sampler" : 0,
+			  "source" : 26
+		  },
+		  {
+			  "sampler" : 0,
+			  "source" : 27
+		  },
+		  {
+			  "sampler" : 0,
+			  "source" : 28
+		  },
+		  {
+			  "sampler" : 0,
+			  "source" : 29
+		  },
+		  {
+			  "sampler" : 0,
+			  "source" : 30
+		  },
+		  {
+			  "sampler" : 0,
+			  "source" : 31
+		  },
+		  {
+			  "sampler" : 0,
+			  "source" : 32
+		  },
+		  {
+			  "sampler" : 0,
+			  "source" : 33
+		  },
+		  {
+			  "sampler" : 0,
+			  "source" : 34
+		  },
+		  {
+			  "sampler" : 0,
+			  "source" : 35
+		  },
+		  {
+			  "sampler" : 0,
+			  "source" : 36
+		  },
+		  {
+			  "sampler" : 0,
+			  "source" : 37
+		  },
+		  {
+			  "sampler" : 0,
+			  "source" : 38
+		  },
+		  {
+			  "sampler" : 0,
+			  "source" : 39
+		  },
+		  {
+			  "sampler" : 0,
+			  "source" : 40
+		  },
+		  {
+			  "sampler" : 0,
+			  "source" : 41
+		  },
+		  {
+			  "sampler" : 0,
+			  "source" : 42
+		  },
+		  {
+			  "sampler" : 0,
+			  "source" : 43
+		  },
+		  {
+			  "sampler" : 0,
+			  "source" : 44
+		  },
+		  {
+			  "sampler" : 0,
+			  "source" : 45
+		  },
+		  {
+			  "sampler" : 0,
+			  "source" : 46
+		  },
+		  {
+			  "sampler" : 0,
+			  "source" : 47
+		  },
+		  {
+			  "sampler" : 0,
+			  "source" : 48
+		  },
+		  {
+			  "sampler" : 0,
+			  "source" : 49
+		  },
+		  {
+			  "sampler" : 0,
+			  "source" : 50
+		  },
+		  {
+			  "sampler" : 0,
+			  "source" : 51
+		  },
+		  {
+			  "sampler" : 0,
+			  "source" : 52
+		  },
+		  {
+			  "sampler" : 0,
+			  "source" : 53
+		  },
+		  {
+			  "sampler" : 0,
+			  "source" : 54
+		  },
+		  {
+			  "sampler" : 0,
+			  "source" : 55
+		  },
+		  {
+			  "sampler" : 0,
+			  "source" : 56
+		  },
+		  {
+			  "sampler" : 0,
+			  "source" : 57
+		  },
+		  {
+			  "sampler" : 0,
+			  "source" : 58
+		  },
+		  {
+			  "sampler" : 0,
+			  "source" : 59
+		  },
+		  {
+			  "sampler" : 0,
+			  "source" : 60
+		  },
+		  {
+			  "sampler" : 0,
+			  "source" : 61
+		  },
+		  {
+			  "sampler" : 0,
+			  "source" : 62
+		  },
+		  {
+			  "sampler" : 0,
+			  "source" : 63
+		  }
+	  ]
 }

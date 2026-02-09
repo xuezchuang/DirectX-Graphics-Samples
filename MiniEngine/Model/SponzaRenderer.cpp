@@ -362,7 +362,7 @@ void Sponza::RenderScene(
         }
     }
 
-    if (!skipDiffusePass)
+    //if (!skipDiffusePass)
     {
         if (!SSAO::DebugDraw)
         {

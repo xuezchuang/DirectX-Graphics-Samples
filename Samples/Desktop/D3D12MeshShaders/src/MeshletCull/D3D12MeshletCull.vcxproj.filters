@@ -100,9 +100,6 @@
     <None Include="..\Assets\Dragon_LOD0.bin">
       <Filter>Assets\Models</Filter>
     </None>
-    <None Include="Camera.bin">
-      <Filter>Assets\Models</Filter>
-    </None>
     <None Include="MeshletCommon.hlsli">
       <Filter>Assets\Shaders</Filter>
     </None>
@@ -112,6 +109,7 @@
     <None Include="MeshletUtils.hlsli">
       <Filter>Assets\Shaders</Filter>
     </None>
+    <None Include="..\Assets\Camera.bin" />
   </ItemGroup>
   <ItemGroup>
     <FxCompile Include="MeshletMS.hlsl">

@@ -15,7 +15,6 @@
 #include "DepthBuffer.h"
 #include "GraphicsCore.h"
 #include "EsramAllocator.h"
-#include "DescriptorHeap.h"
 
 using namespace Graphics;
 

@@ -22,7 +22,6 @@
 #include "ColorBuffer.h"
 #include "SystemTime.h"
 #include "SamplerManager.h"
-#include "DescriptorHeap.h"
 #include "CommandContext.h"
 #include "CommandListManager.h"
 #include "RootSignature.h"

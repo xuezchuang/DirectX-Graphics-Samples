@@ -117,7 +117,7 @@ void ParticleEffect::Update(ComputeContext& CompContext,  float timeDelta)
     //m_EffectProperties.EmitProperties.EmitPosW.z += m_EffectProperties.DirectionIncrement.z;
 
 
-    //CPU side random num gen
+    //CPU side random num gentaa
     for (uint32_t i = 0; i < 64; i++)
     {
         UINT random = (UINT)s_RNG.NextInt(m_EffectProperties.EmitProperties.MaxParticles - 1);

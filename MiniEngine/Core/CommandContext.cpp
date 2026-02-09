@@ -16,7 +16,6 @@
 #include "ColorBuffer.h"
 #include "DepthBuffer.h"
 #include "GraphicsCore.h"
-#include "DescriptorHeap.h"
 #include "EngineProfiling.h"
 #include "UploadBuffer.h"
 #include "ReadbackBuffer.h"
@@ -476,7 +475,11 @@ void CommandContext::InitializeTexture( GpuResource& Dest, UINT NumSubresources,
     InitContext.TransitionResource(Dest, D3D12_RESOURCE_STATE_GENERIC_READ);
 
     // Execute the command list and wait for it to finish so we can release the upload buffer
+	// upload buffer如果下一个buffer使用的时候,没有完成,自然可以new新的page.
+	// fence设为true.释放upload buffer有上传堆,所以释放条件是fence.每次请求上传堆时,ReserveUploadMemory是会判断fence条件的.
+	// 使用LoadDDSFromFile--ManagedTexture::CreateFromMemory--的时候,会返回一个TextureRef.这个玩意弄完直接要析构,会要求删除这个上传堆,这时会有问题.所以这里必须true.
     InitContext.Finish(true);
+	//InitContext.Finish();
 }
 
 void CommandContext::CopySubresource(GpuResource& Dest, UINT DestSubIndex, GpuResource& Src, UINT SrcSubIndex)

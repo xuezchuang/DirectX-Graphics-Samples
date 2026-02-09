@@ -34,7 +34,7 @@
 #include "ShadowCamera.h"
 #include "Display.h"
 
-#define LEGACY_RENDERER
+//#define LEGACY_RENDERER
 
 using namespace GameCore;
 using namespace Math;
@@ -127,6 +127,7 @@ void LoadIBLTextures()
        if (diffuseTex.IsValid())
        {
            TextureRef specularTex = TextureManager::LoadDDSFromFile(L"Textures/" + specularFile);
+		   /*CommandContext::InitializeTexture中必须使用finish(true)的原因就是,如果找不到specularFile这个资源,上面的diffuseTex会析构.这时,上传堆的资源正在想diffuseTex这个gpu资源复制,需要等待完成才可以析构*/
            if (specularTex.IsValid())
            {
                g_IBLSet.AddEnum(baseFile);
@@ -146,12 +147,12 @@ void LoadIBLTextures()
 
 void ModelViewer::Startup( void )
 {
-    MotionBlur::Enable = true;
-    TemporalEffects::EnableTAA = true;
+	MotionBlur::Enable = false;// true;
+	TemporalEffects::EnableTAA = true;
     FXAA::Enable = false;
     PostEffects::EnableHDR = true;
     PostEffects::EnableAdaptation = true;
-    SSAO::Enable = true;
+	SSAO::Enable = true;
 
     Renderer::Initialize();
 
@@ -170,6 +171,7 @@ void ModelViewer::Startup( void )
         Sponza::Startup(m_Camera);
 #else
         m_ModelInst = Renderer::LoadModel(L"Sponza/PBR/sponza2.gltf", forceRebuild);
+		//m_ModelInst = Renderer::LoadModel(L"Sponza/PBR/sponza.h3d", forceRebuild);
         m_ModelInst.Resize(100.0f * m_ModelInst.GetRadius());
         OrientedBox obb = m_ModelInst.GetBoundingBox();
         float modelRadius = Length(obb.GetDimensions()) * 0.5f;
@@ -204,6 +206,17 @@ void ModelViewer::Cleanup( void )
 #endif
 
     Renderer::Shutdown();
+
+#if defined(_DEBUG)
+	// 假设你已经创建了ID3D12Device对象d3dDevice
+	IDXGIDebug1* dxgiDebug;
+	if (SUCCEEDED(DXGIGetDebugInterface1(0, IID_PPV_ARGS(&dxgiDebug))))
+	{
+		dxgiDebug->ReportLiveObjects(DXGI_DEBUG_ALL, DXGI_DEBUG_RLO_FLAGS(DXGI_DEBUG_RLO_SUMMARY | DXGI_DEBUG_RLO_IGNORE_INTERNAL));
+		dxgiDebug->Release();
+	}
+#endif
+
 }
 
 namespace Graphics
@@ -236,7 +249,8 @@ void ModelViewer::Update( float deltaT )
     // dimensions with an extra pixel.  My solution is to only use positive fractional offsets,
     // but that means that the average sample position is +0.5, which I use when I disable
     // temporal AA.
-    TemporalEffects::GetJitterOffset(m_MainViewport.TopLeftX, m_MainViewport.TopLeftY);
+    //TemporalEffects::GetJitterOffset(m_MainViewport.TopLeftX, m_MainViewport.TopLeftY);
+	m_MainViewport.TopLeftX = m_MainViewport.TopLeftY = 0.0;
 
     m_MainViewport.Width = (float)g_SceneColorBuffer.GetWidth();
     m_MainViewport.Height = (float)g_SceneColorBuffer.GetHeight();
@@ -261,9 +275,7 @@ void ModelViewer::RenderScene( void )
 
     if (m_ModelInst.IsNull())
     {
-#ifdef LEGACY_RENDERER
-        Sponza::RenderScene(gfxContext, m_Camera, viewport, scissor);
-#endif
+		Sponza::RenderScene(gfxContext, m_Camera, viewport, scissor, false, true);
     }
     else
     {
@@ -354,7 +366,7 @@ void ModelViewer::RenderScene( void )
 
     ParticleEffectManager::Render(gfxContext, m_Camera, g_SceneColorBuffer, g_SceneDepthBuffer,  g_LinearDepth[FrameIndex]);
 
-    // Until I work out how to couple these two, it's "either-or".
+     //Until I work out how to couple these two, it's "either-or".
     if (DepthOfField::Enable)
         DepthOfField::Render(gfxContext, m_Camera.GetNearClip(), m_Camera.GetFarClip());
     else
